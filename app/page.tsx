@@ -1,22 +1,11 @@
-'use client'
-
-import { SubmitEvent } from "react"
-
 export default function Home() {
-  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const name = form.get("name");
-
-    await fetch("/api/create", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name })
-    });
+  const createAction = async (formData: FormData) => {
+    'use server';
+    const name = formData.get('name');
+    console.log('Server Action で実行されました。')
   };
-  return <form onSubmit={handleSubmit}>
+
+  return <form action={createAction}>
     <input type="text" name="name" />
     <button type="submit">送信</button>
   </form>
