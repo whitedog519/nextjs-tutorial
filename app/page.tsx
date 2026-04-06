@@ -1,9 +1,9 @@
 'use client'
 
-import { FormEvent } from "react"
+import { SubmitEvent } from "react"
 
 export default function Home() {
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
